@@ -1,22 +1,31 @@
 # Rockstar Landscaping
 
-A responsive, single-page landscaping business landing page.
+A responsive two-page landscaping website with a homepage, inspiration gallery, and quote form.
 
-## Preview locally
+## Pages
+- `index.html` — homepage, services, about, quote form
+- `gallery.html` — landscaping inspiration images (not real completed projects)
+- `styles.css` — shared styling
+- `site.js` — quote form submission and copyright year
+- `api/quote.js` — Vercel serverless handler that sends quote emails through Resend
 
-Open `index.html` in a browser, or serve the repository with a static development server.
+## Deploy to Vercel
+Import this GitHub repository as a Vercel project. Use **Other** as the framework preset, with no build command. Vercel serves the HTML files and deploys the `/api/quote` endpoint.
 
-## Deploy
+### Required environment variables
+Configure these in Vercel Project Settings → Environment Variables, then redeploy:
+- `RESEND_API_KEY` — your Resend API key
+- `QUOTE_FROM_EMAIL` — verified sender, e.g. `Rockstar Landscaping <quotes@yourdomain.com>`
+- `QUOTE_TO_EMAIL` — mailbox that should receive quote requests
 
-Deploy as a static site to Vercel, Netlify, or GitHub Pages. No build command or framework is needed. The site entry point is `index.html`.
+Verify the sender domain with Resend before testing. Never commit API keys to GitHub. Without the environment variables, quote submissions return a clear configuration error and **do not send emails**.
 
-## Before launch
+## Before publishing for real customers
+- Replace inspiration stock photographs with licensed images and real approved project images (if available).
+- Confirm the listed services are actually offered, and add service area, business phone, and contact email.
+- Add a suitable privacy policy and business identity/contact information.
+- Add production spam protection (such as Cloudflare Turnstile with server-side verification), rate limits, and monitoring before promoting the form widely.
+- Test the form end-to-end on the deployed Vercel URL.
 
-- Replace sample imagery with licensed, business-specific photos. Current images are remotely hosted on Unsplash.
-- Confirm that Lawn Care, Garden & Planting, and Yard Cleanups are actual services provided.
-- Add real phone/email, service area, and a working quote-request method to the contact section (the current page deliberately does not claim that quotes can be submitted).
-- Replace draft marketing copy with approved business details.
-
-## Stack
-
-HTML, CSS, tiny vanilla JS for the copyright year. Google Fonts and Unsplash images require an internet connection.
+## Local preview
+Open the HTML pages in a browser for visual preview. The quote endpoint runs only when deployed to Vercel or under a compatible local serverless runtime.
