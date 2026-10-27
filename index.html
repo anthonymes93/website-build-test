@@ -9,86 +9,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <style>
-    :root { color-scheme:dark; --bg:#101b15; --surface:#17251d; --cream:#f3f1e9; --muted:#b7c3b8; --green:#bbf178; --border:rgba(255,255,255,.13); --max:1180px; }
-    *,*::before,*::after{box-sizing:border-box}
-    html{scroll-behavior:smooth;scroll-padding-top:88px}
-    body{margin:0;background:var(--bg);color:var(--cream);font-family:"DM Sans",sans-serif;line-height:1.6}
-    a{color:inherit;text-decoration:none}
-    button{font:inherit}
-    img{max-width:100%;display:block}
-    .wrap{width:min(var(--max),calc(100% - 48px));margin-inline:auto}
-    .site-header{position:absolute;top:0;left:0;right:0;z-index:4;border-bottom:1px solid rgba(255,255,255,.22)}
-    .nav{min-height:88px;display:flex;align-items:center;justify-content:space-between;gap:28px}
-    .brand{font-family:Outfit,sans-serif;font-size:1.22rem;font-weight:800;letter-spacing:-.04em;line-height:1.08;display:flex;align-items:center;gap:12px}
-    .brand-mark{width:40px;height:40px;display:grid;place-items:center;border-radius:12px;background:var(--green);color:#18251a;font-size:25px}
-    .brand small{display:block;font-size:.62rem;font-weight:700;letter-spacing:.2em;color:var(--green);text-transform:uppercase;margin-top:4px}
-    .nav-links{display:flex;align-items:center;gap:34px;font-size:.91rem;font-weight:700}
-    .nav-links a:not(.btn):hover,.footer-links a:hover{color:var(--green)}
-    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 24px;border-radius:6px;background:var(--green);color:#122019;font-size:.9rem;font-weight:800;transition:transform .2s ease,background .2s ease}
-    .btn:hover{background:#d2ffa0;transform:translateY(-2px)}
-    .btn.outline{background:transparent;border:1px solid rgba(255,255,255,.55);color:white}
-    .btn.outline:hover{background:rgba(255,255,255,.12)}
-    .hero{min-height:780px;min-height:min(830px,100svh);position:relative;display:flex;align-items:center;isolation:isolate;background:#263f27}
-    .hero::before{content:"";position:absolute;inset:0;z-index:-2;background: url("https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&w=2200&q=85") center/cover no-repeat}
-    .hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(8,21,13,.95) 0%,rgba(8,21,13,.80) 44%,rgba(8,21,13,.2) 100%),linear-gradient(0deg,rgba(10,23,15,.65),transparent 50%)}
-    .hero-inner{padding-top:142px;padding-bottom:110px}
-    .eyebrow{display:inline-flex;align-items:center;gap:12px;color:var(--green);font-weight:800;font-size:.76rem;letter-spacing:.2em;text-transform:uppercase}
-    .eyebrow::before{content:"";height:2px;width:30px;background:currentColor}
-    h1,h2,h3,p{margin-top:0}
-    h1,h2,h3{font-family:Outfit,sans-serif;letter-spacing:-.055em;line-height:1.05}
-    h1{max-width:840px;font-size:clamp(3.6rem,7vw,7.5rem);margin:24px 0}
-    h1 span,.accent{color:var(--green)}
-    .hero p{max-width:550px;color:#e2e9df;font-size:1.12rem;margin-bottom:34px}
-    .hero-actions{display:flex;flex-wrap:wrap;gap:14px}
-    .hero-bottom{position:absolute;bottom:32px;left:0;right:0}
-    .hero-bottom .wrap{display:flex;justify-content:space-between;gap:20px;align-items:center;color:#dde8df;font-size:.76rem;letter-spacing:.13em;text-transform:uppercase;font-weight:700}
-    section{padding:112px 0}
-    .section-top{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:42px}
-    .section-top h2{max-width:680px}
-    h2{font-size:clamp(2.5rem,4.6vw,4.7rem);margin:17px 0 0}
-    .section-desc{color:var(--muted);max-width:380px;margin-bottom:8px}
-    .services{background:#142219}
-    .service-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
-    .service-card{min-height:365px;position:relative;overflow:hidden;border-radius:10px;display:flex;align-items:flex-end;padding:28px;isolation:isolate;background:#345338}
-    .service-card::before{content:"";position:absolute;inset:0;z-index:-2;background-size:cover;background-position:center;transition:transform .5s}
-    .service-card:hover::before{transform:scale(1.07)}
-    .service-card::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,rgba(5,19,10,.95) 0%,rgba(5,19,10,.18) 75%)}
-    .service-card:nth-child(1)::before{background-image:url("https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&w=850&q=80")}
-    .service-card:nth-child(2)::before{background-image:url("https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=850&q=80")}
-    .service-card:nth-child(3)::before{background-image:url("https://images.unsplash.com/photo-1598908314732-07113901949e?auto=format&fit=crop&w=850&q=80")}
-    .service-card small{color:var(--green);font-weight:800;letter-spacing:.2em}
-    .service-card h3{font-size:2rem;margin:8px 0}
-    .service-card p{color:#dee8de;font-size:.89rem;margin:0}
-    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:8%;align-items:center}
-    .about-image{position:relative;min-height:515px;border-radius:10px;background:url("https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=1100&q=85") center/cover}
-    .about-image::after{content:"✦";position:absolute;bottom:-22px;right:-22px;width:104px;height:104px;border-radius:50%;display:grid;place-items:center;background:var(--green);color:#13231a;font-size:4.2rem}
-    .about-copy>p{color:var(--muted);max-width:520px;margin:24px 0}
-    .qualities{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:36px}
-    .qualities div{border-top:1px solid var(--border);padding-top:16px;font-weight:700}
-    .qualities b{display:block;color:var(--green);font-size:1.4rem;margin-bottom:5px}
-    .cta{background:var(--green);color:#14221a;text-align:center;padding:93px 0}
-    .cta .eyebrow{color:#34572a}
-    .cta h2{max-width:830px;margin:22px auto;font-size:clamp(2.6rem,5.8vw,5.8rem)}
-    .cta p{max-width:550px;margin:0 auto 30px;color:#36543a}
-    .cta .btn{background:#15271c;color:white}
-    .cta .btn:hover{background:#2c4934}
-    .contact-note{font-size:.83rem;margin-top:17px!important}
-    footer{padding:40px 0;background:#0b150f}
-    .footer-row{display:flex;justify-content:space-between;gap:24px;align-items:center}
-    footer p{color:#a8b6aa;font-size:.8rem;margin:0}
-    .footer-links{display:flex;gap:24px;font-size:.85rem}
-    :focus-visible{outline:3px solid var(--green);outline-offset:4px}
-    @media(max-width:800px){.nav-links{gap:16px}.nav-links>a:not(.btn){display:none}.hero{min-height:710px}.section-top{align-items:start;flex-direction:column}.service-grid{grid-template-columns:1fr 1fr}.service-card:last-child{grid-column:span 2}.about-grid{grid-template-columns:1fr;gap:50px}.about-image{min-height:400px}.about-copy{order:-1}}
-    @media(max-width:540px){.wrap{width:min(var(--max),calc(100% - 36px))}.nav{min-height:74px}.brand{font-size:1.08rem}.brand-mark{width:34px;height:34px;font-size:22px}.nav .btn{min-height:41px;padding:0 14px;font-size:.76rem}.hero{min-height:730px;min-height:92svh}.hero-inner{padding-top:120px;padding-bottom:120px}h1{font-size:clamp(3.6rem,13vw,5.5rem)}.hero p{font-size:1rem}.hero-bottom .wrap span:last-child{display:none}section{padding:75px 0}.service-grid{grid-template-columns:1fr}.service-card,.service-card:last-child{grid-column:auto;min-height:305px}.about-image{min-height:330px}.about-image::after{right:10px;bottom:-30px;width:75px;height:75px;font-size:3rem}.qualities{gap:12px}.cta{padding:75px 0}.footer-row{flex-direction:column;align-items:start}}
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn,.service-card::before{transition:none}}
-  </style>
+  <link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
   <header class="site-header">
     <div class="wrap nav">
       <a class="brand" href="#home" aria-label="Rockstar Landscaping home"><span class="brand-mark" aria-hidden="true">✦</span><span>ROCKSTAR <small>Landscaping</small></span></a>
-      <nav class="nav-links" aria-label="Main navigation"><a href="#services">Services</a><a href="#about">About</a><a class="btn" href="#contact">Get a free quote ↗</a></nav>
+      <nav class="nav-links" aria-label="Main navigation"><a href="#services">Services</a><a href="/gallery.html">Gallery</a><a href="#about">About</a><a class="btn" href="#quote">Get a free quote ↗</a></nav>
     </div>
   </header>
   <main>
@@ -97,7 +24,7 @@
         <span class="eyebrow">The outdoors, upgraded</span>
         <h1 id="hero-title">Your yard.<br><span>Our stage.</span></h1>
         <p>Great outdoor spaces don't happen by accident. From tidy lawns to total transformations, we help make your property the star of the street.</p>
-        <div class="hero-actions"><a class="btn" href="#contact">Let's talk about your yard ↗</a><a class="btn outline" href="#services">Explore our services</a></div>
+        <div class="hero-actions"><a class="btn" href="#quote">Let's talk about your yard ↗</a><a class="btn outline" href="#services">Explore our services</a></div>
       </div>
       <div class="hero-bottom"><div class="wrap"><span>✦ Made for the great outdoors</span><span>Scroll to explore ↓</span></div></div>
     </section>
@@ -115,14 +42,20 @@
       <div class="about-image" role="img" aria-label="Beautiful green garden landscaping"></div>
       <div class="about-copy"><span class="eyebrow">A little about us</span><h2 id="about-title">We believe every yard deserves its <span class="accent">rockstar moment.</span></h2><p>A great-looking landscape makes coming home feel even better. Rockstar Landscaping is all about the details that turn an ordinary outdoor space into somewhere you love spending time.</p><p>Whether you're keeping things looking sharp or planning a fresh new look, we'd love to hear what you have in mind.</p><div class="qualities"><div><b>✦</b>Care in every detail</div><div><b>✦</b>Outdoor spaces with impact</div></div></div>
     </div></section>
-    <section class="cta" id="contact" aria-labelledby="contact-title"><div class="wrap">
-      <span class="eyebrow">Let's get started</span><h2 id="contact-title">Ready to make your yard the main event?</h2>
-      <p>Tell us what you're dreaming up, and let's turn that outdoor space into something special.</p>
-      <a class="btn" href="#home">Back to the top ↑</a>
-      <p class="contact-note">Contact information and quote-request functionality will be added before launch.</p>
-    </div></section>
+    <section class="quote-section" id="quote" aria-labelledby="quote-title"><div class="wrap quote-layout">
+<div class="quote-copy"><span class="eyebrow">Free quote request</span><h2 id="quote-title">Let's create something <span style="color:#4d762f">amazing.</span></h2><p>Tell us a little about your outdoor project and we'll get back to you using the contact details you provide.</p><ul class="quote-points"><li>✦ Lawn care and maintenance</li><li>✦ Garden and planting projects</li><li>✦ Seasonal cleanups and more</li></ul><p>For now, this form is ready to connect to the website's email service. Configure the deployment environment before accepting real requests.</p></div>
+<form class="quote-form" id="quote-form"><h3>Request your quote</h3><p>Fields marked * are required.</p><div class="form-grid">
+<div class="field"><label for="customer-name">Full name *</label><input id="customer-name" name="name" autocomplete="name" required maxlength="100" /></div>
+<div class="field"><label for="customer-email">Email address *</label><input id="customer-email" name="email" type="email" autocomplete="email" required maxlength="200" /></div>
+<div class="field"><label for="customer-phone">Phone number</label><input id="customer-phone" name="phone" type="tel" autocomplete="tel" maxlength="40" /></div>
+<div class="field"><label for="customer-location">Project location *</label><input id="customer-location" name="location" autocomplete="address-level2" placeholder="City or neighbourhood" required maxlength="120" /></div>
+<div class="field wide"><label for="customer-service">What can we help with? *</label><select id="customer-service" name="service" required><option value="">Select a service</option><option>Lawn care</option><option>Garden and planting</option><option>Yard cleanup</option><option>Other landscaping project</option></select></div>
+<div class="field wide"><label for="customer-message">Tell us about your project *</label><textarea id="customer-message" name="message" required minlength="10" maxlength="3000" placeholder="What are you looking to have done?"></textarea></div>
+</div><div class="hp" aria-hidden="true"><label for="customer-website">Leave this empty</label><input id="customer-website" name="website" tabindex="-1" autocomplete="off" /></div>
+<button class="btn" id="submit-quote" type="submit">Send quote request ↗</button><div id="form-status" class="form-status" role="status" aria-live="polite"></div><p class="form-legal">Your details will be used to respond to your request. Please don't include sensitive personal information.</p></form>
+</div></section><section class="cta" id="contact"><div class="wrap"><span class="eyebrow">Next step</span><h2>Make your outdoor space the main event.</h2><p>Browse more ideas or tell us what you've got in mind.</p><a class="btn" href="/gallery.html">Explore the gallery ↗</a></div></section>
   </main>
-  <footer><div class="wrap footer-row"><a class="brand" href="#home"><span class="brand-mark" aria-hidden="true">✦</span><span>ROCKSTAR <small>Landscaping</small></span></a><p>© <span id="year"></span> Rockstar Landscaping. All rights reserved.</p><div class="footer-links"><a href="#services">Services</a><a href="#about">About</a><a href="#contact">Contact</a></div></div></footer>
-  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+  <footer><div class="wrap footer-row"><a class="brand" href="#home"><span class="brand-mark" aria-hidden="true">✦</span><span>ROCKSTAR <small>Landscaping</small></span></a><p>© <span id="year"></span> Rockstar Landscaping. All rights reserved.</p><div class="footer-links"><a href="#services">Services</a><a href="#about">About</a><a href="#quote">Get a Quote</a></div></div></footer>
+  <script src="/site.js" defer></script>
 </body>
 </html>
